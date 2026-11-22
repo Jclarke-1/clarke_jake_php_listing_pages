@@ -1,5 +1,4 @@
 <?php 
-
 require_once __DIR__ . '/includes/scripts/database.php';
 
 $connection = getConnection();
@@ -27,7 +26,7 @@ $queryResult = mysqli_query($connection, 'SELECT * FROM books;');
             <li>
                 <article>
                     <h3>
-                        <a href="details.php?id=<?php echo $book['book_id']; ?>">
+                        <a href="details.php?id=<?php echo $book['id']; ?>">
                             <?php echo $book['book_title']; ?>
                         </a>
                     </h3>
