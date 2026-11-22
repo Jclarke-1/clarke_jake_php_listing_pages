@@ -4,7 +4,7 @@ require_once __DIR__ . '/includes/scripts/database.php';
 
 $connection = getConnection();
 
-$id = $_GET['id'] ?? null;
+$id = $_GET['book_id'] ?? null;
 
 if ($id === null) {
     http_response_code(404);
@@ -12,7 +12,7 @@ if ($id === null) {
     exit('Error! Book not found');
 }
 
-$queryResult = mysqli_query($connection, 'SELECT * FROM books WHERE id =' . $id . ';');
+$queryResult = mysqli_query($connection, 'SELECT * FROM books WHERE book_id =' . $id . ';');
 
 $book = mysqli_fetch_assoc($queryResult);
 
@@ -22,7 +22,7 @@ if(! $book) {
     exit('Error! Book not found!');
 }
 
-$bookId = $book['id'];
+$bookId = $book['book_id'];
 
 
 
