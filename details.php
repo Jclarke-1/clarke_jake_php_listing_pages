@@ -23,7 +23,7 @@ if(! $book) {
 
 $bookId = $book['id'];
 
-$genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_id=' . $bookId . ';');
+$genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_id =' . $bookId . ';');
 
 ?>
 
@@ -42,23 +42,20 @@ $genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_i
     <main>
         <h2><?php echo $book['book_author'];?> </h2>
         <ul>
-            <?php while ($book = mysqli_fetch_assoc($queryResult)):?>
             <li>
                 <article>
-                 <?php if ($book['book_image']): ?>
-                    <img src="<?php echo $book['book_image']; ?>" alt="<?php echo $book['book_title'];?> cover">
-                    <?php endif; ?>
-                    <p>
+                <img src="<?php echo $book['book_image']; ?>" alt="<?php echo $book['book_title'];?> cover">
+                  <p>
                         <?php echo $book['book_synopsis'];?>
                     </p>
-                    <?php while ($genre = mysqli_fetch_assoc($genreResult)) {?>
+                   <?php while ($genre = mysqli_fetch_assoc($genreResult)) { ?>
                     <h3>
-                    <?php echo $genre['genre_id'];?>
+                       <?php echo $genre['genre_type'];?>
                     </h3>
-                    <?php } ?>
+                       <?php } ?>
                 </article>
             </li>
-             <?php endwhile; ?>
+           
         </ul>
     </main>
     <footer></footer>
