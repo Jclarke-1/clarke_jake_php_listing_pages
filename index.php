@@ -12,7 +12,7 @@ $queryResult = mysqli_query($connection, 'SELECT * FROM books;');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Books Database</title>
 </head>
 <body>
@@ -21,16 +21,17 @@ $queryResult = mysqli_query($connection, 'SELECT * FROM books;');
     </header>
     <main>
         <h2>Books</h2>
+        <div>
         <ul>
             <?php while ($book = mysqli_fetch_array($queryResult)): ?>
             <li>
                 <article>
-                    <h3>
+                    <h3 class="title">
                         <a href="details.php?id=<?php echo $book['id']; ?>">
                             <?php echo $book['book_title']; ?>
                         </a>
                     </h3>
-                    <h4>
+                    <h4 class="author">
                         <?php echo $book['book_author'];?>
                     </h4>
                     <?php if ($book['book_image']): ?>
@@ -43,6 +44,7 @@ $queryResult = mysqli_query($connection, 'SELECT * FROM books;');
             </li>
            <?php endwhile; ?>
         </ul>
+        </div>
     </main>
     <footer></footer>
      <script src="main.js"></script>

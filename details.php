@@ -32,15 +32,20 @@ $genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_i
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="main.css">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
     <title>Book Archive - <?php echo $book['book_title']; ?> </title>
 </head>
 <body>
     <header>
-        <h1><?php echo $book['book_title'];?> </h1>
+        <h1 class="title"><?php echo $book['book_title'];?> </h1>
     </header>
     <main>
-        <h2><?php echo $book['book_author'];?> </h2>
+        <h2 class="author"><?php echo $book['book_author'];?> </h2>
+              <?php while ($genre = mysqli_fetch_assoc($genreResult)) { ?>
+                    <h3 class="genre">
+                       <?php echo $genre['genre_type'];?>
+                    </h3>
+                       <?php } ?>
         <ul>
             <li>
                 <article>
@@ -48,11 +53,6 @@ $genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_i
                   <p>
                         <?php echo $book['book_synopsis'];?>
                     </p>
-                   <?php while ($genre = mysqli_fetch_assoc($genreResult)) { ?>
-                    <h3>
-                       <?php echo $genre['genre_type'];?>
-                    </h3>
-                       <?php } ?>
                 </article>
             </li>
            
