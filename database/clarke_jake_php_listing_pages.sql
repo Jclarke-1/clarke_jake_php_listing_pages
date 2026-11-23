@@ -47,14 +47,10 @@ CREATE TABLE IF NOT EXISTS `clarke_jake_php_listing_pages`.`books` (
 
 DROP TABLE IF EXISTS `clarke_jake_php_listing_pages`.`books_genre`;
 CREATE TABLE IF NOT EXISTS `clarke_jake_php_listing_pages`.`books_genre` (
- `lovecraftian` int NOT NULL,
-  `classic` int NOT NULL,
-  `post apocalyptic` int NOT NULL,
-  `horror` int NOT NULL,
-  `steampunk` int NOT NULL,
+  `genre_id` int UNSIGNED NOT NULL AUTO_INCREMENT,
+ `genre_type` VARCHAR(60) NOT NULL,
   `book_id` int UNSIGNED NOT NULL,
-   `genre_id` int UNSIGNED NOT NULL,
-  CONSTRAINT `genre_books`
+  CONSTRAINT `genre_books_FK`
   FOREIGN KEY (`book_id`) REFERENCES books(`id`),
   PRIMARY KEY (`genre_id`)
 ) ENGINE=INNODB CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -83,10 +79,16 @@ INSERT INTO `clarke_jake_php_listing_pages`.`books`(`id`, `book_title`,`book_aut
 (4, 'THE BURIAL TIDE', 'Neil Sharpson', 'images/the-burial-tide.jpg', 'A woman who cant remember her death. On an eerily quiet island off the coast of Ireland, a woman with no memory claws her way out of her grave and back to life. But not everyone welcomes the return of Mara Fitch.', 'Drawing on the creatures and horrors of Irish folklore, The Burial Tide unearths our darkest truths: how far wed go to win our freedom, and how quickly our desires can become monstrous.'),
 (5, 'Lord of Mysteries', 'Cuttlefish That Loves Diving', 'images/lord-of-mysteries.jpg', 'When Zhou Mingrui wakes up bloody and dazed, he finds himself in a world of guns, factories, airships, and difference engines. But underneath the surface of all this industry, there exists a secret society revolving around divination, sealed artifacts, and much more.', 'As Zhou Mingrui tries to find out what brought him to this place, he quickly learns that mystery is lurking around every corner―and danger is never far behind! This is the legend of the Fool…');
 
--- INSERT INTO `clarke_jake_php_listing_pages`.`genres`(`book_id`, `genre_id`) VALUES
---    (1, lovecraftian)
---     , (2, classic)
---     , (3, post-apocalyptic)
---     , (4, horror)
---     , (5, steampunk)
---     ;
+INSERT INTO `clarke_jake_php_listing_pages`.`books_genre`(`book_id`,`genre_type`) VALUES
+(1, 'lovecraftian'),
+(2, 'classic'),
+(3, 'post-apocalyptic'),
+(4, 'horror'),
+(5, 'steampunk');
+
+INSERT INTO `clarke_jake_php_listing_pages`.`genres` (`book_id`, `genre_id`) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 4),
+(5, 5);

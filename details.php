@@ -23,7 +23,7 @@ if(! $book) {
 
 $bookId = $book['id'];
 
-$genreResult = mysqli_query($connection, 'SELECT * FROM genres WHERE book_id=' . $bookId . ';');
+$genreResult = mysqli_query($connection, 'SELECT * FROM books_genre WHERE book_id=' . $bookId . ';');
 
 ?>
 
